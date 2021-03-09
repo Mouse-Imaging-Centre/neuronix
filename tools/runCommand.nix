@@ -3,10 +3,10 @@
 
 deps: overrides: cmd:
 
-mkDerivation rec {
+mkDerivation (rec {
 
   name = "runCommand.mnc";
   buildInputs = builtins.attrValues deps;
 
   inherit cmd;
-} // overrides
+} // overrides)
