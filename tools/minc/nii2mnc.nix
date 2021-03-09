@@ -1,6 +1,8 @@
-{ mkDerivation, minc_tools }:
+{ mkDerivation, lib, minc_tools }:
 
-{ infile, dtype ? null }:
+{ dtype ? null }:
+
+infile:
 
 mkDerivation rec {
 
@@ -8,8 +10,6 @@ mkDerivation rec {
 
   buildInputs = [ minc_tools ];
 
-  inherit infile dtype;
-
-  cmd = ''nii2mnc ''${dtype:+-$dtype} $infile $out'';
+  cmd = ''nii2mnc ${lib.optionalString (dtype!=null) "-dtype ${dtype}"} ${infile} $out'';
 
 }
