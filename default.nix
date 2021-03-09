@@ -31,6 +31,7 @@ let
     runMincCommand = callPackage ./tools/runCommand.nix { } {
       inherit (nixpkgs) minc_tools minc_widgets mni_autoreg;
     };
+    runMincCommand_ = runMincCommand { };
 
     mincbigaverage = callPackage ./tools/minc/mincbigaverage.nix { };
 
@@ -58,8 +59,10 @@ let
     mincresample = callPackage ./tools/minc/mincresample.nix { };
 
     mnc2nii = callPackage ./tools/minc/mnc2nii.nix { };
+    mnc2nii_ = mnc2nii { };
 
     nii2mnc = callPackage ./tools/minc/nii2mnc.nix { };
+    nii2mnc_ = nii2mnc { };
 
     smooth_vector = callPackage ./tools/minc/smooth_vector.nix { };
 
@@ -81,6 +84,7 @@ let
     ### imaging tools - ANTs suite
 
     runANTsCommand = callPackage ./tools/runCommand.nix { } { inherit (nixpkgs) ants; };
+    runANTsCommand_ = runANTsCommand { };
 
     antsRegistration = callPackage ./tools/ants/antsRegistration.nix { };
 
